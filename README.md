@@ -5,6 +5,7 @@
     <p>19/08/16 - Creado Repo "Lab 2". Añadida clase Ejercicios y primer commit</p>
     <p>22/08/16 - Añadida clase Batalla Naval</p>
     <p>24/08/16 - Actualizado Batalla Naval</p>
+    <p>25/08/16 - Finalizado Batalla Naval</p>
     <p>Gracias vuelva prontos</p>
   </body>
 </html>
