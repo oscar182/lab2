@@ -24,25 +24,40 @@ public class Main {
             if(matriz[i][f] == '~'){
                 matriz[i][f] = 'O';
 
-                int a = (int) (Math.random()*(1-4)+4);
-                switch (a){
-                    case 1: { //Arriba
-
+                boolean rta = true;
+                do {
+                    int a = (int) (Math.random()*(1-4)+4);
+                    switch (a){
+                        case 1: { //Arriba
+                            if(i != 0){
+                                matriz[i - 1][f] = 'O';
+                                rta = false;
+                            }
+                        }
+                        break;
+                        case 2: { //Abajo
+                            if (i != 9){
+                                matriz[i + 1][f] = 'O';
+                                rta = false;
+                            }
+                        }
+                        break;
+                        case 3: { //Derecha
+                            if (f != 9){
+                                matriz[i][f + 1] = 'O';
+                                rta = false;
+                            }
+                        }
+                        break;
+                        case 4: { //Izquierda
+                            if (f != 0){
+                                matriz[i][f - 1] = 'O';
+                                rta = false;
+                            }
+                        }
+                        break;
                     }
-                    break;
-                    case 2: { //Abajo
-
-                    }
-                    break;
-                    case 3: { //Derecha
-
-                    }
-                    break;
-                    case 4: { //Izquierda
-
-                    }
-                    break;
-                }
+                } while (rta);
                 cont++;
             }
         }
