@@ -5,61 +5,55 @@ import java.util.*;
  */
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        char[][] matriz = new char[10][10];
 
-        imprimirMensaje("Batalla Naval");
-        imprimirMensaje("¿Iniciar? Si/No");
-        String mensaje = sc.next();
-
-        if(mensaje.equalsIgnoreCase("si")){
-
-            int[][] matriz = new int[10][10];
-            for(int i = 0; i < 10; i++){
-                for(int f = 0; f < 10; f++){
-                    matriz[i][f] = 0;
-                }
+        for (int i = 0; i < 10; i++){
+            for (int f = 0; f < 10; f++){
+                matriz[i][f] = '~';
             }
-
-            imprimirMensaje("Tablero inicial");
-            imprimirMensaje("   A B C D E F G H I J");
-            for(int i = 0; i < 10; i++){
-                System.out.print(i + "." + " ");
-                for(char f = 0; f < 10; f++){
-                    System.out.print(matriz[i][f] + " ");
-                }
-                imprimirMensaje("");
-            }
-
-            System.out.println("\n\n");
-            imprimirMensaje("Cargar barcos"); int cont = 0;
-
-            while(cont != 3){
-                imprimirMensaje("Ingrese coordenadas");
-
-                System.out.print("Ingrese una Letra de la A a la J: "); char letra = sc.next().charAt(0);
-                System.out.print("Ingrese un numero del 1 al 10: "); int i = sc.nextInt();
-
-                if((letra >= 65 && letra <= 74) || (letra >= 97 && letra <= 106)){
-                    if(i >= 1 && i <= 10){
-                        imprimirMensaje("bien gato\n");
-                        cont++;
-                    } else {
-                        imprimirMensaje("El numero no esta entre 1 y 10\n");
-                    }
-                } else {
-                    imprimirMensaje("La letra no esta entre la A y la J\n");
-                }
-            }
-        } else if(mensaje.equalsIgnoreCase("no")){
-            imprimirMensaje("Bueno bai");
-        } else {
-            imprimirMensaje("Era Si o No gato");
         }
-    }
 
-    public static void imprimirMensaje(String mensaje){
-        System.out.println(mensaje);
+        int cont = 0;
+        while (cont != 3){
+            int i = (int) (Math.random()*9);
+            int f = (int) (Math.random()*9);
+
+            if(matriz[i][f] == '~'){
+                matriz[i][f] = 'O';
+
+                int a = (int) (Math.random()*(1-4)+4);
+                switch (a){
+                    case 1: { //Arriba
+
+                    }
+                    break;
+                    case 2: { //Abajo
+
+                    }
+                    break;
+                    case 3: { //Derecha
+
+                    }
+                    break;
+                    case 4: { //Izquierda
+
+                    }
+                    break;
+                }
+                cont++;
+            }
+        }
+        System.out.println("     Tablero Inicial");
+        System.out.println("   A B C D E F G H I J");
+        for (int i = 0; i < 10; i++){
+            System.out.print(i + ". ");
+            for (int f = 0; f < 10; f++){
+                System.out.print(matriz[i][f] + " ");
+            }
+            System.out.println("");
+        }
     }
 }
