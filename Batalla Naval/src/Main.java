@@ -115,6 +115,7 @@ public class Main {
              */
             System.out.println("1: Imprimir tablero");
             System.out.println("-1: Salir del juego");
+	    System.out.println("2: Continuar juego");
             int preg = sc.nextInt();
 
             if (preg == 1){
@@ -128,10 +129,11 @@ public class Main {
                 }
             } else if (preg == -1){
                 rta = false;
-            } else {
-                System.out.println("Tenes que ingresar 1 o -1");
-                System.out.println("Por vivo segui jugando");
-            }
+            } else if(preg == 2){
+		System.out.println("Siguiente turno");
+	    } else {
+		System.out.println("El dato era 1, -1 o 2 gato, por vivo segui jugando");
+	    }
 
             /**
              * Comprobar cantidad de barcos
