@@ -1,6 +1,6 @@
 <html>
   <body>
-    <h2>Github - Alan49</h2>
+    <h2>Laboratorio 2 - Alan Obregón</h2>
     <p>Aqui voy a ir subiendo los trabajos que se tenga que hacer en Laboratorio 2</p>
     <hr/>
     <p>19/08/16 - Creado Repo "Lab 2". Añadida clase Ejercicios y primer commit</p>
