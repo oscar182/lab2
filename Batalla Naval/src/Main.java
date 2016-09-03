@@ -2,6 +2,9 @@ import java.util.*;
 
 /**
  * Created by Alan on 22/08/2016.
+ * Batalla Naval con carga de 3 Barcos Aleatorios
+ * El tablero tiene un tamaño por defecto de 10x10
+ *
  */
 public class Main {
 
