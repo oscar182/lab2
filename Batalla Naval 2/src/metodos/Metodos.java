@@ -20,6 +20,7 @@ public class Metodos {
      * Cargar Barcos
      */
     public static boolean sonContiguos(char[][] matriz , int a, int b, int c, int d){
+
         return false;
     }
 
