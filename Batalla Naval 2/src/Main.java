@@ -24,6 +24,7 @@ public class Main {
         char[][] tablero = new char[a][a];
         crearTablero(tablero, a);
         imprimirTablero(tablero, a);
+        println("");
 
         //Cargamos la cantidad de barcos deseados
         int cantMAX = ((a * a) / 2);
@@ -35,38 +36,71 @@ public class Main {
         }
 
         //Hora de cargar los barcos
-        int[] array = new int[4];
+        String coor1 = "";
+        String coor2 = "";
+        int letA, numA, letB, numB;
         int cont = 1;
         while (cont <= cantBarcos) {
             print("Ingrese las coordenadas para añadir al barco " + cont + ": ");
-            String coor1 = scanner.next();
-            String coor2 = scanner.next();
-            array[0] = posicionLetra(coor1) - 1;
-            array[1] = posicionNum(coor1) - 1;
-            array[2] = posicionLetra(coor2) - 1;
-            array[3] = posicionNum(coor2) - 1;
+            coor1 = scanner.next();
+            coor2 = scanner.next();
+            letA = posicionLetra(coor1) - 1;
+            numA = posicionNum(coor1) - 1;
+            letB = posicionLetra(coor2) - 1;
+            numB = posicionNum(coor2) - 1;
 
-            if ((array[0] >= 0) && (array[0] <= a)){
-                if ((array[1] >= 0) && (array[1] <= a)){
-                    if ((array[2] >= 0) && (array[2] <= a)){
-                        if ((array[3] >= 0) && (array[3] <= a)){
-                            if (sonContiguos(tablero, array[0], array[1], array[2], array[3])){
-
+            if ((letA >= 0) && (letA < a)){
+                if ((numA >= 0) && (numA < a)){
+                    if ((letB >= 0) && (letB < a)){
+                        if ((numB >= 0) && (numB < a)){
+                            if (sonContiguos(a, letA, numA, letB, numB)){
+                                if ((tablero[numA][letA] == '~') && (tablero[numB][letB] == '~')){
+                                    tablero[numA][letA] = 'O';
+                                    tablero[numB][letB] = 'O';
+                                    cont++;
+                                }
                             } else {
                                 println("Las coordenadas no son contiguas. Por favor ingrese dos coordenadas que sean contiguas");
                             }
                         } else {
-                            println("La numero de la coordenada " + coor2 + " supera el rango maximo del tablero. Por favor ingrese las coordenadas nuevamente");
+                            println("La numero de la coordenada " + coor2 + " no puede ser cargada. Por favor ingrese las coordenadas nuevamente");
                         }
                     } else {
-                        println("La letra de la coordenada " + coor2 + " supera el rango maximo del tablero. Por favor ingrese las coordenadas nuevamente");
+                        println("La letra de la coordenada " + coor2 + " no puede ser cargada. Por favor ingrese las coordenadas nuevamente");
                     }
                 } else {
-                    println("La numero de la coordenada " + coor1 + " supera el rango maximo del tablero. Por favor ingrese las coordenadas nuevamente");
+                    println("La numero de la coordenada " + coor1 + " no puede ser cargada. Por favor ingrese las coordenadas nuevamente");
                 }
             } else {
-                println("La letra de la coordenada " + coor1 + " supera el rango maximo del tablero. Por favor ingrese las coordenadas nuevamente");
+                println("La letra de la coordenada " + coor1 + " no puede ser cargada. Por favor ingrese las coordenadas nuevamente");
             }
         }
+
+        println("");
+        //Imprimir tablero inicial
+        println("Tablero Inicial:");
+        imprimirTablero(tablero, a);
+
+        int rta = 0;
+        while (quedanBarcos(tablero, a)){
+            //Atacar
+            print("Ingrese las coordenadas para atacar: "); coor1 = scanner.next();
+            letA = posicionLetra(coor1) - 1;
+            numA = posicionNum(coor1) - 1;
+
+            if (tablero[numA][letA] == 'O'){
+                tablero[numA][letA] = 'X';
+            }
+
+            println("1: Imprimir tablero actual\n2: Continuar\n3: Salir");
+            print("Que desea hacer?: "); rta = scanner.nextInt();
+            if (rta == 1){
+                imprimirTablero(tablero, a);
+            } else if (rta == 3){
+                crearTablero(tablero, a);
+            }
+        }
+
+        println("Juego finalizado");
     }
 }
