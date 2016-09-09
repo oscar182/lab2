@@ -6,7 +6,7 @@ package metodos;
 public class Metodos {
 
     /**
-     * Crear Tablero
+     * Metodo para crear el tablero
      */
     public static void crearTablero(char[][] matriz, int tam){
         for (int i = 0; i < tam; i++){
@@ -17,9 +17,19 @@ public class Metodos {
     }
 
     /**
-     * Cargar Barcos
+     * Metodos para saber la letra de los barcos,
+     * y para cargarlos
      */
-    public static boolean sonContiguos(char[][] matriz , int a, int b, int c, int d){
+    public static boolean sonContiguos(int tam, int letA, int numA, int letB, int numB){
+        if(((letA >= 0) && (letA < tam)) && ((numA >= 0) && (numA < tam))){
+            if(((letB >= 0) && (letB < tam)) && ((numB >= 0) && (numB < tam))){
+                if (((letB == letA + 1) || (letB == letA - 1)) && (numB == numA)){
+                    return true;
+                } else if (((numB == numA + 1) || (numB == letA - 1)) && (letB == letA)){
+                    return true;
+                }
+            }
+        }
 
         return false;
     }
@@ -51,12 +61,12 @@ public class Metodos {
     }
 
     /**
-     * Imprimir tablero
+     * Metodo para imprimir el tablero
      */
     public static void imprimirTablero(char[][] matriz, int tam){
         int cont = 0;
         char ascii = 65;
-        print(" ");
+        print("  ");
         while (cont != tam){
             print(" ");
             print(ascii);
@@ -75,7 +85,25 @@ public class Metodos {
     }
 
     /**
-     * Print's
+     * Metodo para comprobar si quedan barcos
+     */
+    public static boolean quedanBarcos(char[][] matriz, int tam){
+        int cont = 0;
+        for (int i = 0; i < tam; i++){
+            for (int f = 0; f < tam; f++){
+                if (matriz[i][f] == 'O'){
+                    cont++;
+                }
+            }
+        }
+
+        if (cont > 0){
+            return true;
+        } else return false;
+    }
+
+    /**
+     * Metodos print's
      */
     public static void println(String mensaje){
         System.out.println(mensaje);
